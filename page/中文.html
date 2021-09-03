@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PFRLVY</title>
+    <style type="text/css">
+    @font-face {
+        font-family: digit;
+        src: url('digital-7_mono.ttf') format("truetype");
+    }
+    </style>
+
+    <link href="../css/default.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/garden.js"></script>
+    <script type="text/javascript" src="../js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+    <div id="content">
+        <div id="code">
+            <span class="comments">/**</span><br />
+            <span class="space"/><span class="comments">*相遇 2021—02-14;</span><br />
+            <span class="space"/><span class="comments">*在一起 2021-03-07;</span><br />
+            <span class="space"/><span class="comments" id="now"></span><br />
+            <span class="space"/><span class="comments">*/</span></span><br />
+            男孩的名字 = <span class="keyword">pjh</span>;<br />
+            女孩的名字 = <span class="keyword">yzy</span>;<br />
+            <span class="comments">// 渐渐坠入爱河;</span><br />
+            男孩<span class="keyword">爱着</span>女孩;<br />
+            <span class="comments">// 他们彼此相爱;</span><br />
+            女孩<span class="keyword">也爱着</span>男孩;<br />
+            <span class="comments">// 随着时间的推移;</span><br />
+            男孩发现他<span class="keyword">离不开</span>女孩;<br />
+            <span class="comments">// 与此同时;</span><br />
+            女孩<span class="keyword">也不能离开</span>男孩;<br />
+            <span class="keyword">男孩</span>非常<span class="keyword">开心</span>;<br />
+            <span class="keyword">女孩</span>也非常<span class="keyword">开心</span>;<br />
+            男孩认为他找到了世界上<span class="keyword">最好的</span>;<br />
+            <span class="comments">// 不管是现在;</span><br />
+            <span class="comments">// 还是在遥远的未来;</span><br />
+            男孩只有<span class="keyword">一个愿望</span>;<br />
+            男孩希望女孩能<span class="keyword">一直快乐</span>;<br />
+            <br>
+            我想说;<br />
+            宝贝我会一直爱着你;<br />
+            想和你一起生活，分享每一天的平凡，每一刻的幸福，感动，每一秒的甜蜜。我不知道这是否奢侈。不管怎样，我已经习惯奢求了很长时间;<br />
+            <br>
+            <span class="keyword">平平淡淡才是真;<br />
+            安安乐乐才是福;</span><br />
+            <br>
+            <a href="英文.html">咩咩大宝贝</a>
+        </div>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    这是我们在一起走过的时光。
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu">
+                    爱你的<br/>
+                    <div class="signature">- 庞健虎</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setFullYear(2021, 02, 07);//月份一栏的数据填入是0-11，即01为2月份。
+    together.setHours(0);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+    var today = new Date();
+    var now = "*现在 " + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ";"; 
+    $("#now").html(now);
+
+    if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        setTimeout(function () {
+            startHeartAnimation();
+        }, 3000);
+
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);//elapse:计算时间差函数；
+        }, 500);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+    }
+</script>
+</body>
+</html>
